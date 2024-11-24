@@ -269,14 +269,17 @@ body {
     align-items: center;
 }
 
+/* Common styling for mobile */
 @media screen and (max-width: 768px) {
     #header {
         padding: 15px 30px;
+        position: sticky;  /* Makes the header sticky */
+        top: -100px; /* Initially set off-screen */
+        transition: top 0.3s ease; /* Smooth transition for sliding up and down */
     }
 
     #navbar {
-        display: none; /* Hide the normal navbar */
-        flex-direction: column; /* Stack the navbar items vertically */
+        flex-direction: column;
         align-items: flex-start;
     }
 
@@ -285,18 +288,8 @@ body {
     }
 
     #navbar li a {
-        font-size: 14px; /* Smaller font size for mobile */
+        font-size: 14px;
         padding: 5px 0;
-    }
-
-    #close {
-        display: block; /* Show the close button for mobile */
-        font-size: 25px;
-        color: #1a1a1a;
-    }
-
-    #mobile {
-        display: flex; /* Show the mobile icon */
     }
 }
 
@@ -307,25 +300,30 @@ body {
     }
 
     #navbar li a {
-        font-size: 12px; /* Further reduce font size */
+        font-size: 12px;
         padding: 8px 0;
-    }
-
-    #mobile {
-        display: flex;
-        justify-content: space-between;
-        width: 100%; /* Ensure mobile icon and other elements fit */
     }
 
     #navbar {
         width: 100%;
-        display: none; /* Hide navbar until mobile menu is toggled */
     }
 
     #navbar li {
         width: 100%;
         padding: 10px 0;
-        text-align: center; /* Center align items on mobile */
+        text-align: center;
+    }
+}
+
+/* When the page is scrolled down, the header will hide */
+@media screen and (max-width: 768px) {
+    body {
+        overflow-y: scroll; /* Allow scrolling */
+    }
+
+    /* When the page is scrolled, this will apply */
+    #header.sticky {
+        top: -80px; /* Push header off-screen when scrolling */
     }
 }
 
